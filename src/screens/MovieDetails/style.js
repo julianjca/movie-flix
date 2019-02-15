@@ -19,7 +19,7 @@ justify-content: space-around;
 
 export const H1 = styled.h1`
 text-align: left;
-font-size: 2.5rem;
+font-size: 2.2rem;
 text-transform: uppercase;
 `
 
