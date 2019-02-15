@@ -29,6 +29,7 @@ class MovieDetails extends Component {
         url: `${MOVIE_BY_ID_API}${movieID}`,
         params: paramsByID
       });
+      console.log(data)
       this.setState({
         isLoaded: true,
         movieDetails: data,
@@ -68,6 +69,7 @@ class MovieDetails extends Component {
             <Div>
               <img src={ IMAGE_URL + movieDetails.poster_path } alt=""/>
               <InnerDiv>
+                <h2>Overview</h2>
                 <p>{movieDetails.overview}</p>
                 <div style={{ width: '100px' }}>
                   <CircularProgressbar

@@ -29,6 +29,11 @@ text-align: left;
     width: 70%;
     font-size: 1.2rem;
   }
+  h2 {
+    text-align: left;
+    width: 70%;
+    margin: 0 auto;
+  }
 `;
 
 export const Button = styled.a`
