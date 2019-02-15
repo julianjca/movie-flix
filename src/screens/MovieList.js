@@ -1,7 +1,9 @@
 import React from 'react';
+import queryString from 'query-string';
 
 const MovieList = (props) => {
-  console.log(props.location, 'props')
+  const parsed = queryString.parse(props.location.search);
+
   return (
     <div>Movie List Component</div>
   )
