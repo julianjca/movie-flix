@@ -23,7 +23,8 @@ export default function(page){
           payload : {
             movies : data.results,
             isMovieLoaded : true,
-            errors : ''
+            errors : '',
+            total_pages: data.total_pages
           }
         })
       })

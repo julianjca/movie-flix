@@ -16,8 +16,19 @@ const MyLoader = () => (
 
 class MovieList extends Component {
   state = {
-    movieList: {},
     currentPage: 1
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const parsedProps = queryString.parse(this.props.location.search);
+    const parsedNextProps = queryString.parse(nextProps.location.search);
+
+    if (parsedProps.page !== parsedNextProps.page) {
+      nextProps.getMovies(parsedNextProps);
+      this.setState({
+        currentPage: parsedNextProps
+      })
+    }
   }
 
   componentDidMount() {
@@ -35,13 +46,17 @@ class MovieList extends Component {
         {
           this.props.movieData.isMovieLoaded
           ?
-          <GridContainer>
-            {
-              this.props.movieData.movies.map((movie)=>{
-                return <MovieCard movie= {movie} key={movie.id} />
-              })
-            }
-          </GridContainer>
+          <React.Fragment>
+            <GridContainer>
+              {
+                this.props.movieData.movies.map((movie)=>{
+                  return <MovieCard movie= {movie} key={movie.id} />
+                })
+              }
+            </GridContainer>
+            <h4>total pages: {this.props.movieData.total_pages}</h4>
+          </React.Fragment>
+
 
           :
           <GridContainer>

@@ -3,7 +3,8 @@ import { REQUEST_MOVIE_LIST, REQUEST_MOVIE_SUCCESS, REQUEST_MOVIE_FAILED } from 
 const initialState = {
   isMovieLoaded: false,
   movies: {},
-  errors: ''
+  errors: '',
+  total_pages: 0
 }
 
 const MovieReducer = (state = initialState, action) => {
@@ -17,7 +18,8 @@ const MovieReducer = (state = initialState, action) => {
         ...state,
         isMovieLoaded: true,
         movies: action.payload.movies,
-        errors: ''
+        errors: '',
+        total_pages: action.payload.total_pages
       }
     case REQUEST_MOVIE_FAILED:
       return {
