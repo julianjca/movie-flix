@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import './App.css';
-import MovieList from './screens/MovieList';
+import MovieList from './screens/MovieList/index';
 import MovieDetails from './screens/MovieDetails';
 import store from './store';
 
