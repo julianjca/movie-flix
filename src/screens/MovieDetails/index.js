@@ -57,7 +57,7 @@ class MovieDetails extends Component {
       toast.success('Success buying movie!');
     }
     else {
-      toast.error('No sufficient fund!');
+      toast.error('Insufficient fund!');
     }
 
   }
