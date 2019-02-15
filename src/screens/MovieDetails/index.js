@@ -2,13 +2,16 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import CircularProgressbar from 'react-circular-progressbar';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import 'react-circular-progressbar/dist/styles.css';
 
 
 import { MOVIE_BY_ID_API, paramsByID, IMAGE_URL } from '../../constants';
 import PriceHelper from '../../helpers/price';
 import addMovieAction from '../../store/movies/addMovie';
-import { InnerDiv, Div, H1, OuterDiv } from './style';
+import { InnerDiv, Div, H1, OuterDiv, Button } from './style';
 
 class MovieDetails extends Component {
   state = {
@@ -49,6 +52,7 @@ class MovieDetails extends Component {
     const { movieDetails } = this.state;
     if((this.props.movieData.balance - PriceHelper(movieDetails.vote_average)> 0) && !this.props.movieData.ownedMovies.includes(movieDetails.id)) {
       this.props.addMovie(movieDetails.id.toString(), PriceHelper(movieDetails.vote_average));
+      toast.success('Success buying movie!');
     }
   }
 
@@ -75,9 +79,9 @@ class MovieDetails extends Component {
                 <h3>Duration { movieDetails.runtime } minutes</h3>
                 {
                   isOwned ?
-                  <h3>you already bought this movie</h3>
+                  <Button inactive>BOUGHT</Button>
                   :
-                  <button onClick={this.addMovie}>buy movie</button>
+                  <Button onClick={this.addMovie}>buy movie</Button>
                 }
               </InnerDiv>
             </Div>

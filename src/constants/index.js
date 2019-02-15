@@ -16,6 +16,6 @@ export const NOW_PLAYING_API = 'https://api.themoviedb.org/3/movie/now_playing';
 
 export const MOVIE_BY_ID_API = 'https://api.themoviedb.org/3/movie/';
 
-export const IMAGE_URL = 'https://image.tmdb.org/t/p/w300';
+export const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 export const SMALL_IMAGE_URL = 'https://image.tmdb.org/t/p/w200'
 

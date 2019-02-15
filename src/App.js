@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
+import { ToastContainer } from 'react-toastify';
+
 
 import './App.css';
 import MovieList from './screens/MovieList/index';
@@ -13,6 +15,7 @@ class App extends Component {
       <Provider store = { store }>
         <Router>
           <div className="App">
+            <ToastContainer />
             <Switch>
               <Route exact path='/' component = { MovieList }/>
               <Route path='/:movie' component = { MovieDetails }/>

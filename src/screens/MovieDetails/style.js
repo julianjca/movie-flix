@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const OuterDiv = styled.div`
 width: 80%;
@@ -25,7 +25,27 @@ justify-content: center;
 align-items: center;
 text-align: left;
   p {
-    width: 50%;
+    width: 70%;
     font-size: 1.2rem;
   }
+`;
+
+export const Button = styled.a`
+color: black;
+background-color: #FFF;
+cursor: pointer;
+font-size:16px;
+font-weight: 700;
+line-height: 45px;
+border-radius: 5px;
+text-align: center;
+margin: 0 auto;
+max-width: 160px;
+text-decoration: none;
+text-transform: uppercase;
+width: 100%;
+${props=> props.inactive && css`
+background-color: green;
+color: white;
+`}
 `
