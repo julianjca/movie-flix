@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
-import { connect } from 'react-redux';
-import ContentLoader from 'react-content-loader'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';import { Link } from 'react-router-dom'
 
 import getMoviesAction from '../../store/movies/getMovies';
 import MovieCard from '../../components/MovieCard/index';
+import MoviePlaceHolder from '../../components/MoviePlaceHolder';
 
 import { GridContainer } from './style';
 
-const MyLoader = () => (
-  <ContentLoader>
-    <rect rx="5" ry="5" width="150" height="400" />
-  </ContentLoader>
-)
 
 class MovieList extends Component {
   state = {
@@ -124,11 +118,7 @@ class MovieList extends Component {
           </React.Fragment>
           :
           <GridContainer>
-            <MyLoader />
-            <MyLoader />
-            <MyLoader />
-            <MyLoader />
-            <MyLoader />
+            <MoviePlaceHolder />
           </GridContainer>
         }
       </div>
