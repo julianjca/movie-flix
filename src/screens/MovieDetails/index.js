@@ -8,7 +8,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { MOVIE_BY_ID_API, paramsByID, IMAGE_URL } from '../../constants';
 import PriceHelper from '../../helpers/price';
 import addMovieAction from '../../store/movies/addMovie';
-import { InnerDiv, Div } from './style';
+import { InnerDiv, Div, H1, OuterDiv } from './style';
 
 class MovieDetails extends Component {
   state = {
@@ -59,8 +59,8 @@ class MovieDetails extends Component {
         {
           isLoaded
           ?
-          <Fragment>
-            <h1>{ movieDetails.title }</h1>
+          <OuterDiv>
+            <H1>{ movieDetails.title }</H1>
             <Div>
               <img src={ IMAGE_URL + movieDetails.poster_path } alt=""/>
               <InnerDiv>
@@ -82,7 +82,7 @@ class MovieDetails extends Component {
               </InnerDiv>
             </Div>
 
-          </Fragment>
+          </OuterDiv>
           : <h4>Loading Data from API</h4>
         }
       </div>
