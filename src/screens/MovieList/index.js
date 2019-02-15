@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import ContentLoader from 'react-content-loader'
 
 import getMoviesAction from '../../store/movies/getMovies';
-import MovieCard from '../../components/MovieCard';
+import MovieCard from '../../components/MovieCard/index';
 
 import { GridContainer } from './style';
 

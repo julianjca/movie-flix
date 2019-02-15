@@ -1,6 +1,6 @@
 import React from 'react';
-import { SMALL_IMAGE_URL } from '../constants';
-import PriceHelper from '../helpers/price';
+import { SMALL_IMAGE_URL } from '../../constants';
+import PriceHelper from '../../helpers/price';
 
 const MovieCard = (props) => {
   const { movie } = props;
