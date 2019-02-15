@@ -1,10 +1,12 @@
-import { REQUEST_MOVIE_LIST, REQUEST_MOVIE_SUCCESS, REQUEST_MOVIE_FAILED } from './actions';
+import { REQUEST_MOVIE_LIST, REQUEST_MOVIE_SUCCESS, REQUEST_MOVIE_FAILED, ADD_MOVIE } from './actions';
 
 const initialState = {
   isMovieLoaded: false,
   movies: {},
   errors: '',
-  total_pages: 0
+  total_pages: 0,
+  ownedMovies: [],
+  balance: 100000
 }
 
 const MovieReducer = (state = initialState, action) => {
@@ -27,6 +29,12 @@ const MovieReducer = (state = initialState, action) => {
         isMovieLoaded: false,
         movies: {},
         errors: 'error getting data'
+      }
+      case ADD_MOVIE:
+      return {
+        ...state,
+        ownedMovies: state.ownedMovies.concat(action.payload.movie),
+        balance: state.balance - action.payload.price
       }
     default:
       return state

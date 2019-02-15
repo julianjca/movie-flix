@@ -9,8 +9,6 @@ export default function(page){
       type : REQUEST_MOVIE_LIST
     })
 
-    console.log(page)
-
     paramsNowPlaying.page = page.page;
     axios({
       method : 'GET',
