@@ -9,9 +9,7 @@ export default function(page){
       type : REQUEST_MOVIE_LIST
     })
 
-    paramsNowPlaying.page = page.page;
-    console.log(page.page)
-
+    paramsNowPlaying.page = page.page || page;
     axios({
       method : 'GET',
       url : NOW_PLAYING_API,

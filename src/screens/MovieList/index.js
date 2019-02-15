@@ -33,7 +33,7 @@ class MovieList extends Component {
 
   componentDidMount() {
     const parsed = queryString.parse(this.props.location.search);
-    this.props.getMovies(parsed.page || 1);
+    this.props.getMovies(parsed.page || this.props.location.search[this.props.location.search.length-1]);
     this.setState({
       currentPage: parsed.page || 1
     })
