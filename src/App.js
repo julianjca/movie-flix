@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 
 import './App.css';
 import MovieList from './screens/MovieList';
+import MovieDetails from './screens/MovieDetails';
 import store from './store';
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
           <div className="App">
             <Switch>
               <Route exact path='/' component = { MovieList }/>
+              <Route path='/:movie' component = { MovieDetails }/>
             </Switch>
           </div>
         </Router>

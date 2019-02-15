@@ -5,7 +5,10 @@ const MovieList = (props) => {
   const parsed = queryString.parse(props.location.search);
 
   return (
-    <div>Movie List Component</div>
+    <div>
+      <h2>Movie List Component</h2>
+      <h6>{ parsed.page || '' }</h6>
+    </div>
   )
 }
 
