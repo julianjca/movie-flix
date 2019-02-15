@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import CircularProgressbar from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
 
 import { MOVIE_BY_ID_API, paramsByID, IMAGE_URL } from '../../constants';
 import PriceHelper from '../../helpers/price';
@@ -62,17 +65,22 @@ class MovieDetails extends Component {
               <img src={ IMAGE_URL + movieDetails.poster_path } alt=""/>
               <InnerDiv>
                 <p>{movieDetails.overview}</p>
-                <h3>Rating {movieDetails.vote_average}</h3>
+                <div style={{ width: '100px' }}>
+                  <CircularProgressbar
+                    percentage={movieDetails.vote_average * 10}
+                    text={`${movieDetails.vote_average * 10}%`}
+                  />
+                </div>
                 <h3>Rp { PriceHelper(movieDetails.vote_average) }</h3>
                 <h3>Duration { movieDetails.runtime } minutes</h3>
+                {
+                  isOwned ?
+                  <h3>you already bought this movie</h3>
+                  :
+                  <button onClick={this.addMovie}>buy movie</button>
+                }
               </InnerDiv>
             </Div>
-            {
-              isOwned ?
-              <h3>you already bought this movie</h3>
-              :
-              <button onClick={this.addMovie}>buy movie</button>
-            }
 
           </Fragment>
           : <h4>Loading Data from API</h4>
