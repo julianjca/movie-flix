@@ -10,6 +10,7 @@ import 'react-circular-progressbar/dist/styles.css';
 
 import { MOVIE_BY_ID_API, paramsByID, IMAGE_URL } from '../../constants';
 import PriceHelper from '../../helpers/price';
+import ColorHelper from '../../helpers/color';
 import addMovieAction from '../../store/movies/addMovie';
 import { InnerDiv, Div, H1, OuterDiv, Button } from './style';
 
@@ -75,6 +76,10 @@ class MovieDetails extends Component {
                   <CircularProgressbar
                     percentage={movieDetails.vote_average * 10}
                     text={`${movieDetails.vote_average * 10}%`}
+                    styles={{
+                      path: { stroke: ColorHelper(movieDetails.vote_average) },
+                      text: { fill: ColorHelper(movieDetails.vote_average), fontSize: '16px' },
+                    }}
                   />
                 </div>
                 <h3>Rp { PriceHelper(movieDetails.vote_average) }</h3>
