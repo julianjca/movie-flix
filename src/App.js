@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ToastContainer } from 'react-toastify';
 
-
 import './App.css';
 import MovieList from './screens/MovieList/index';
 import MovieDetails from './screens/MovieDetails/index';
+import Header from './components/Header/index';
 import store from './store';
 
 class App extends Component {
@@ -15,6 +15,7 @@ class App extends Component {
       <Provider store = { store }>
         <Router>
           <div className="App">
+            <Header />
             <ToastContainer autoClose={1500}/>
             <Switch>
               <Route exact path='/' component = { MovieList }/>
