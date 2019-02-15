@@ -33,7 +33,9 @@ class MovieList extends Component {
 
   componentDidMount() {
     const parsed = queryString.parse(this.props.location.search);
-    this.props.getMovies(parsed.page || this.props.location.search[this.props.location.search.length-1]);
+    this.props.getMovies(parsed.page ||
+    this.props.location.search[this.props.location.search.length-1] ||
+    this.state.currentPage);
     this.setState({
       currentPage: parsed.page || 1
     })
@@ -58,26 +60,48 @@ class MovieList extends Component {
             {
               Number(this.state.currentPage) === 1
               ?
-              <Link
-                to={{
-                  pathname: "/",
-                  search: `?page=${Number(this.state.currentPage) + 1}`,
-                }}
-              >Next Page</Link>
+              <React.Fragment>
+                {
+                  this.props.movieData.total_pages === 1
+                  ?
+                  <h4>The total page is only 1</h4>
+                  :
+                  <Link
+                    to={{
+                      pathname: "/",
+                      search: `?page=${Number(this.state.currentPage) + 1}`,
+                    }}
+                  >Next Page</Link>
+                }
+              </React.Fragment>
               :
               <React.Fragment>
-                <Link
-                  to={{
-                    pathname: "/",
-                    search: `?page=${Number(this.state.currentPage) - 1}`,
-                  }}
-                >Previous Page</Link>
-                <Link
-                to={{
-                  pathname: "/",
-                  search: `?page=${Number(this.state.currentPage) + 1}`,
-                }}
-                >Next Page</Link>
+                {
+                  Number(this.props.movieData.total_pages) === Number(this.state.currentPage)
+                  ?
+                  <Link
+                    to={{
+                      pathname: "/",
+                      search: `?page=${Number(this.state.currentPage) - 1}`,
+                    }}
+                  >Previous Page</Link>
+                  :
+                  <React.Fragment>
+                    <Link
+                      to={{
+                        pathname: "/",
+                        search: `?page=${Number(this.state.currentPage) - 1}`,
+                      }}
+                    >Previous Page</Link>
+                    <Link
+                    to={{
+                      pathname: "/",
+                      search: `?page=${Number(this.state.currentPage) + 1}`,
+                    }}
+                    >Next Page</Link>
+                  </React.Fragment>
+
+                }
               </React.Fragment>
 
             }
