@@ -56,6 +56,10 @@ class MovieDetails extends Component {
       this.props.addMovie(movieDetails.id.toString(), PriceHelper(movieDetails.vote_average));
       toast.success('Success buying movie!');
     }
+    else {
+      toast.error('No sufficient fund!');
+    }
+
   }
 
   render() {
