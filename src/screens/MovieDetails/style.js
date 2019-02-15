@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const OuterDiv = styled.div`
 width: 80%;
 margin: 0 auto;
+font-family: 'Open Sans';
 `
 
 export const Div = styled.div`

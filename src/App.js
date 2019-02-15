@@ -15,7 +15,7 @@ class App extends Component {
       <Provider store = { store }>
         <Router>
           <div className="App">
-            <ToastContainer />
+            <ToastContainer autoClose={1500}/>
             <Switch>
               <Route exact path='/' component = { MovieList }/>
               <Route path='/:movie' component = { MovieDetails }/>

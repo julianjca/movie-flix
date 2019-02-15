@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Div = styled.div`
+font-family: 'Open Sans';
 text-decoration: none;
 color: black;
 width: 90%;
