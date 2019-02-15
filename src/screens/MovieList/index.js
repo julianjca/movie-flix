@@ -10,7 +10,7 @@ import { GridContainer } from './style';
 
 const MyLoader = () => (
   <ContentLoader>
-    <rect x="0" y="0" rx="5" ry="5" width="150" height="400" />
+    <rect rx="5" ry="5" width="150" height="400" />
   </ContentLoader>
 )
 
