@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
 import ContentLoader from 'react-content-loader'
+import { Link } from 'react-router-dom'
 
 import getMoviesAction from '../../store/movies/getMovies';
 import MovieCard from '../../components/MovieCard/index';
@@ -22,11 +23,10 @@ class MovieList extends Component {
   componentWillReceiveProps(nextProps) {
     const parsedProps = queryString.parse(this.props.location.search);
     const parsedNextProps = queryString.parse(nextProps.location.search);
-
     if (parsedProps.page !== parsedNextProps.page) {
       nextProps.getMovies(parsedNextProps);
       this.setState({
-        currentPage: parsedNextProps
+        currentPage: parsedNextProps.page
       })
     }
   }
@@ -55,9 +55,49 @@ class MovieList extends Component {
               }
             </GridContainer>
             <h4>total pages: {this.props.movieData.total_pages}</h4>
+            {
+              Number(this.state.currentPage) === 1
+              ?
+              <Link
+                to={{
+                  pathname: "/",
+                  search: `?page=${Number(this.state.currentPage) + 1}`,
+                }}
+              >Next Page</Link>
+              :
+              <React.Fragment>
+                <Link
+                  to={{
+                    pathname: "/",
+                    search: `?page=${Number(this.state.currentPage) - 1}`,
+                  }}
+                >Previous Page</Link>
+                <Link
+                to={{
+                  pathname: "/",
+                  search: `?page=${Number(this.state.currentPage) + 1}`,
+                }}
+                >Next Page</Link>
+              </React.Fragment>
+
+            }
+            <Link
+              to={{
+                pathname: "/",
+                search: `?page=${this.state.currentPage - 1}`,
+                hash: "#the-hash",
+                state: { fromDashboard: true }
+              }}
+            />
+            <Link
+              to={{
+                pathname: "/",
+                search: `?page=${this.state.currentPage + 1}`,
+                hash: "#the-hash",
+                state: { fromDashboard: true }
+              }}
+            />
           </React.Fragment>
-
-
           :
           <GridContainer>
             <MyLoader />
