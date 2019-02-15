@@ -11,6 +11,10 @@ display: flex;
 margin: 0 auto;
 /* width: 80%; */
 justify-content: space-around;
+  img {
+    width: 50%;
+    height: auto;
+  }
 `;
 
 export const H1 = styled.h1`
@@ -25,6 +29,7 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 text-align: left;
+width: 90%;
   p {
     width: 70%;
     font-size: 1.2rem;
@@ -33,6 +38,8 @@ text-align: left;
     text-align: left;
     width: 70%;
     margin: 0 auto;
+    margin-top: 20px;
+    font-weight: 700;
   }
 `;
 

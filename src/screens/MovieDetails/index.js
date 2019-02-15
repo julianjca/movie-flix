@@ -7,8 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import 'react-circular-progressbar/dist/styles.css';
 
-
-import { MOVIE_BY_ID_API, paramsByID, IMAGE_URL } from '../../constants';
+import { MOVIE_BY_ID_API, paramsByID, IMAGE_URL, YOUTUBE_TRAILER_API, YOUTUBE_BASE_URL } from '../../constants';
 import PriceHelper from '../../helpers/price';
 import ColorHelper from '../../helpers/color';
 import addMovieAction from '../../store/movies/addMovie';
@@ -18,7 +17,8 @@ class MovieDetails extends Component {
   state = {
     movieDetails: {},
     isLoaded: false,
-    isOwned: false
+    isOwned: false,
+    youtubeUrl: ''
   }
 
   componentDidMount = async () => {
@@ -30,11 +30,20 @@ class MovieDetails extends Component {
         url: `${MOVIE_BY_ID_API}${movieID}`,
         params: paramsByID
       });
-      console.log(data)
+
+      const youtubeData = await axios({
+        method: 'GET',
+        url: YOUTUBE_TRAILER_API,
+        params: {
+          q: data.title + 'trailer'
+        }
+      });
+
       this.setState({
         isLoaded: true,
         movieDetails: data,
-        isOwned: this.props.movieData.ownedMovies.includes(movieID)
+        isOwned: this.props.movieData.ownedMovies.includes(movieID),
+        youtubeUrl: YOUTUBE_BASE_URL + youtubeData.data.items[0].id.videoId
       })
     } catch (e) {
       console.log(e)
@@ -63,7 +72,7 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { isLoaded, movieDetails, isOwned } = this.state;
+    const { isLoaded, movieDetails, isOwned, youtubeUrl } = this.state;
     return (
       <div>
         {
@@ -74,6 +83,7 @@ class MovieDetails extends Component {
             <Div>
               <img src={ IMAGE_URL + movieDetails.poster_path } alt=""/>
               <InnerDiv>
+                <iframe width="600" height="300" src={youtubeUrl} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 <h2>Overview</h2>
                 <p>{movieDetails.overview}</p>
                 <div style={{ width: '100px' }}>
