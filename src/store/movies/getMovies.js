@@ -9,7 +9,8 @@ export default function(page){
       type : REQUEST_MOVIE_LIST
     })
 
-    paramsNowPlaying.page = page;
+    paramsNowPlaying.page = page.page;
+    console.log(page.page)
 
     axios({
       method : 'GET',
@@ -17,7 +18,6 @@ export default function(page){
       params: paramsNowPlaying
     })
       .then(({data})=>{
-        console.log(data)
         dispatch({
           type : REQUEST_MOVIE_SUCCESS,
           payload : {

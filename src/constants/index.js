@@ -1,5 +1,5 @@
 const API_KEY = '17f155cf401439f44476ce31a909de90'
-const region = 'ID';
+const region = 'US';
 const language = 'en';
 
 export const paramsNowPlaying = {

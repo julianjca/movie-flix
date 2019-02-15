@@ -32,8 +32,8 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
-    this.props.getMovies(this.state.currentPage);
     const parsed = queryString.parse(this.props.location.search);
+    this.props.getMovies(parsed.page || 1);
     this.setState({
       currentPage: parsed.page || 1
     })
