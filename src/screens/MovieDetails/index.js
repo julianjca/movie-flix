@@ -25,14 +25,7 @@ class MovieDetails extends Component {
       this.setState({
         isLoaded: true,
         movieDetails: data,
-        isBought: this.props.movieData.ownedMovies.find((item)=> {
-          if(item.id = movieID){
-            return true
-          }
-          else {
-            return false
-          }
-        })
+        isOwned: this.props.movieData.ownedMovies.includes(movieID)
       })
     } catch (e) {
       console.log(e)
@@ -50,7 +43,7 @@ class MovieDetails extends Component {
 
   addMovie = () => {
     const { movieDetails } = this.state;
-    if(this.props.movieData.balance - PriceHelper(movieDetails.vote_average)> 0) {
+    if((this.props.movieData.balance - PriceHelper(movieDetails.vote_average)> 0) && !this.props.movieData.ownedMovies.includes(movieDetails.id)) {
       this.props.addMovie(movieDetails.id.toString(), PriceHelper(movieDetails.vote_average));
     }
   }
