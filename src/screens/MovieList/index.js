@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
+import ContentLoader from 'react-content-loader'
 
 import getMoviesAction from '../../store/movies/getMovies';
 import MovieCard from '../../components/MovieCard';
+
+import { GridContainer } from './style';
+
+const MyLoader = () => (
+  <ContentLoader>
+    <rect x="0" y="0" rx="5" ry="5" width="150" height="400" />
+  </ContentLoader>
+)
+
 class MovieList extends Component {
   state = {
     movieList: {},
@@ -25,11 +35,22 @@ class MovieList extends Component {
         {
           this.props.movieData.isMovieLoaded
           ?
-          this.props.movieData.movies.map((movie)=>{
-            return <MovieCard movie= {movie} key={movie.id} />
-          })
+          <GridContainer>
+            {
+              this.props.movieData.movies.map((movie)=>{
+                return <MovieCard movie= {movie} key={movie.id} />
+              })
+            }
+          </GridContainer>
+
           :
-          <h3>Loading data</h3>
+          <GridContainer>
+            <MyLoader />
+            <MyLoader />
+            <MyLoader />
+            <MyLoader />
+            <MyLoader />
+          </GridContainer>
         }
       </div>
     );

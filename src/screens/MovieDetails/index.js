@@ -1,47 +1,54 @@
-import React, { Component } from 'react';
-import queryString from 'query-string';
-import { connect } from 'react-redux';
+import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 
-import getMoviesAction from '../../store/movies/getMovies';
+import { MOVIE_BY_ID_API, paramsByID, IMAGE_URL } from '../../constants';
+import PriceHelper from '../../helpers/price';
 
-class MovieList extends Component {
+class MovieDetails extends Component {
   state = {
-    movieList: {},
-    currentPage: 1
+    movieDetails: {},
+    isLoaded: false
   }
 
-  componentDidMount() {
-    console.log(this.props);
-    this.props.getMovies(this.state.currentPage);
-    const parsed = queryString.parse(this.props.location.search);
-    console.log(parsed)
-    this.setState({
-      currentPage: parsed.page || 1
-    })
+  componentDidMount = async () => {
+    const { match : { params } } = this.props;
+    const movieID = params.movie.split('-')[0];
+    try {
+      const { data } = await axios({
+        method:'GET',
+        url: `${MOVIE_BY_ID_API}${movieID}`,
+        params: paramsByID
+      });
+      console.log(data)
+      this.setState({
+        isLoaded: true,
+        movieDetails: data
+      })
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   render() {
+    const { isLoaded, movieDetails } = this.state;
     return (
       <div>
-        <h2>Movie List Component</h2>
-        <h6>{ this.state.currentPage || '' }</h6>
+        {
+          isLoaded
+          ?
+          <Fragment>
+            <h2>{ movieDetails.title }</h2>
+            <img src={ IMAGE_URL + movieDetails.poster_path } alt=""/>
+            <h3>Rating {movieDetails.vote_average}</h3>
+            <h3>Rp { PriceHelper(movieDetails.vote_average) }</h3>
+            <h3>Duration { movieDetails.runtime } minutes</h3>
+
+          </Fragment>
+          : <h4>Loading Data from API</h4>
+        }
       </div>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    props: state
-  }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    getMovies: (page) => {
-      dispatch(getMoviesAction(page))
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MovieList);
+export default MovieDetails;
