@@ -17,12 +17,13 @@ export default function(page){
       params: paramsNowPlaying
     })
       .then(({data})=>{
+        console.log(data)
         dispatch({
           type : REQUEST_MOVIE_SUCCESS,
           payload : {
             movies : data.results,
-            isLoaded : true,
-            errors : []
+            isMovieLoaded : true,
+            errors : ''
           }
         })
       })
@@ -33,8 +34,8 @@ export default function(page){
           type : REQUEST_MOVIE_FAILED,
           payload : {
             characters : [],
-            isLoaded : false,
-            errors : err
+            isMovieLoaded : false,
+            errors : ''
           }
         })
       })

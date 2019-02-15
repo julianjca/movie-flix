@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 
 import './App.css';
 import MovieList from './screens/MovieList/index';
-import MovieDetails from './screens/MovieDetails';
+import MovieDetails from './screens/MovieDetails/index';
 import store from './store';
 
 class App extends Component {

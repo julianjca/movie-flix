@@ -24,7 +24,7 @@ const MovieReducer = (state = initialState, action) => {
         ...state,
         isMovieLoaded: false,
         movies: {},
-        errors: action.payload.error
+        errors: 'error getting data'
       }
     default:
       return state

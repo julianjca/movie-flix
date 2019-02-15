@@ -3,7 +3,7 @@ import queryString from 'query-string';
 import { connect } from 'react-redux';
 
 import getMoviesAction from '../../store/movies/getMovies';
-import MovieCard from '../../components/MovieCard';
+
 class MovieList extends Component {
   state = {
     movieList: {},
@@ -11,8 +11,10 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
     this.props.getMovies(this.state.currentPage);
     const parsed = queryString.parse(this.props.location.search);
+    console.log(parsed)
     this.setState({
       currentPage: parsed.page || 1
     })
@@ -22,15 +24,7 @@ class MovieList extends Component {
     return (
       <div>
         <h2>Movie List Component</h2>
-        {
-          this.props.movieData.isMovieLoaded
-          ?
-          this.props.movieData.movies.map((movie)=>{
-            return <MovieCard movie= {movie} key={movie.id} />
-          })
-          :
-          <h3>Loading data</h3>
-        }
+        <h6>{ this.state.currentPage || '' }</h6>
       </div>
     );
   }
@@ -38,7 +32,7 @@ class MovieList extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    movieData: state
+    props: state
   }
 }
 
