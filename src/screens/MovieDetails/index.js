@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { MOVIE_BY_ID_API, paramsByID, IMAGE_URL } from '../../constants';
 import PriceHelper from '../../helpers/price';
 import addMovieAction from '../../store/movies/addMovie';
+import { InnerDiv, Div } from './style';
 
 class MovieDetails extends Component {
   state = {
@@ -56,11 +57,16 @@ class MovieDetails extends Component {
           isLoaded
           ?
           <Fragment>
-            <h2>{ movieDetails.title }</h2>
-            <img src={ IMAGE_URL + movieDetails.poster_path } alt=""/>
-            <h3>Rating {movieDetails.vote_average}</h3>
-            <h3>Rp { PriceHelper(movieDetails.vote_average) }</h3>
-            <h3>Duration { movieDetails.runtime } minutes</h3>
+            <h1>{ movieDetails.title }</h1>
+            <Div>
+              <img src={ IMAGE_URL + movieDetails.poster_path } alt=""/>
+              <InnerDiv>
+                <p>{movieDetails.overview}</p>
+                <h3>Rating {movieDetails.vote_average}</h3>
+                <h3>Rp { PriceHelper(movieDetails.vote_average) }</h3>
+                <h3>Duration { movieDetails.runtime } minutes</h3>
+              </InnerDiv>
+            </Div>
             {
               isOwned ?
               <h3>you already bought this movie</h3>
