@@ -4,6 +4,7 @@ export const OuterDiv = styled.div`
 width: 80%;
 margin: 0 auto;
 font-family: 'Open Sans';
+padding-bottom: 5%;
 `
 
 export const Div = styled.div`
