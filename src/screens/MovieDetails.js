@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import { MOVIE_BY_ID_API, paramsByID } from '../constants';
+import { MOVIE_BY_ID_API, paramsByID, IMAGE_URL } from '../constants';
 
 class MovieDetails extends Component {
   state = {
@@ -34,7 +34,7 @@ class MovieDetails extends Component {
         <h2>Movie Details Component</h2>
         {
           isLoaded
-          ? <h4>{ JSON.stringify(movieDetails) }</h4>
+          ? <img src={ IMAGE_URL + movieDetails.poster_path } alt=""/>
           : <h4>Loading Data from API</h4>
         }
       </div>
