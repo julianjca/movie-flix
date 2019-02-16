@@ -37,7 +37,7 @@ width: 90%;
   }
   h2 {
     text-align: left;
-    width: 80%;
+    width: 130%;
     margin: 0 0;
     margin-top: 20px;
     font-weight: 700;

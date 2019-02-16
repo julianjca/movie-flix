@@ -101,7 +101,15 @@ class MovieDetails extends Component {
                 </iframe>
                 <TitleGrid>
                   <div>
-                    <h2>Overview</h2>
+                    <h2>Overview
+                      <span style={{
+                        fontSize: '1rem',
+                        color: '#4FA149',
+                        paddingLeft: '5%'
+                      }}>
+                        IDR { PriceHelper(movieDetails.vote_average) }
+                      </span>
+                    </h2>
                     <h4>{ movieDetails.runtime } minutes</h4>
                   </div>
                   <div
@@ -119,7 +127,8 @@ class MovieDetails extends Component {
 
                 <p>{movieDetails.overview}</p>
                 <TitleGrid>
-                  <h3>Rp { PriceHelper(movieDetails.vote_average) }</h3>
+                  {/* <h3>IDR { PriceHelper(movieDetails.vote_average) }</h3> */}
+                  <div></div>
                   {
                     isOwned ?
                     <Button inactive>BOUGHT</Button>
