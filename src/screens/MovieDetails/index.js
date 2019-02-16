@@ -111,21 +111,23 @@ class MovieDetails extends Component {
                     text={`${movieDetails.vote_average * 10}%`}
                     styles={{
                       path: { stroke: ColorHelper(movieDetails.vote_average) },
-                      text: { fill: ColorHelper(movieDetails.vote_average), fontSize: '20px' },
+                      text: { fill: ColorHelper(movieDetails.vote_average), fontSize: '25px' },
                     }}
                   />
                 </div>
                 </TitleGrid>
 
                 <p>{movieDetails.overview}</p>
+                <TitleGrid>
+                  <h3>Rp { PriceHelper(movieDetails.vote_average) }</h3>
+                  {
+                    isOwned ?
+                    <Button inactive>BOUGHT</Button>
+                    :
+                    <Button onClick={this.addMovie}>buy movie</Button>
+                  }
+                </TitleGrid>
 
-                <h3>Rp { PriceHelper(movieDetails.vote_average) }</h3>
-                {
-                  isOwned ?
-                  <Button inactive>BOUGHT</Button>
-                  :
-                  <Button onClick={this.addMovie}>buy movie</Button>
-                }
               </InnerDiv>
             </Div>
 

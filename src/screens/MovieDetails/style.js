@@ -59,11 +59,11 @@ font-weight: 700;
 line-height: 45px;
 border-radius: 5px;
 text-align: center;
-margin: 0 auto;
-max-width: 160px;
+margin: 0 0;
+max-width: 100px;
+width: 100%;
 text-decoration: none;
 text-transform: uppercase;
-width: 100%;
 ${props=> props.inactive && css`
 background-color: green;
 color: white;
