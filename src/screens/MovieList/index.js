@@ -38,7 +38,7 @@ class MovieList extends Component {
   render() {
     return (
       <div>
-        <h2>Movie List Component</h2>
+        <h2>MOVIE LIST</h2>
         {
           this.props.movieData.isMovieLoaded
           ?

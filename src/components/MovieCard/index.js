@@ -16,8 +16,8 @@ const MovieCard = (props) => {
       }}
     >
       <Div>
-        <h3><b>{ movie.title }</b></h3>
         <img src={ SMALL_IMAGE_URL + movie.poster_path } alt=""/>
+        <h3><b>{ movie.title }</b></h3>
         <h4>Rating {movie.vote_average}</h4>
         <h4>Rp { PriceHelper(movie.vote_average) }</h4>
       </Div>
