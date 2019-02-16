@@ -80,6 +80,7 @@ class MovieDetails extends Component {
 
   render() {
     const { isLoaded, movieDetails, isOwned, youtubeUrl } = this.state;
+    console.log(this.state)
     return (
       <div>
         {

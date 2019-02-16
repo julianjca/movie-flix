@@ -32,7 +32,7 @@ const MovieCard = (props) => {
           starDimension="12px"
           starSpacing="2px"
         />
-        <h4>Rp { PriceHelper(movie.vote_average) }</h4>
+        <h4>IDR { PriceHelper(movie.vote_average) }</h4>
         {
           movieData.ownedMovies.includes(movie.id.toString())
           &&

@@ -16,5 +16,18 @@ color: #FFF;
   }
   h1 {
     font-size: 2.7rem;
+    color: #42B549;
   }
 `;
+
+export const InnerDiv = styled.div`
+display: inline-block;
+width: 30%;
+  h3, span {
+    display: inline-block;
+  }
+  h3 {
+    padding-right: 3%;
+    font-weight: 300;
+  }
+`
