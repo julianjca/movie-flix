@@ -8,10 +8,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-circular-progressbar/dist/styles.css';
 
 import { MOVIE_BY_ID_API, paramsByID, IMAGE_URL, YOUTUBE_TRAILER_API, YOUTUBE_BASE_URL } from '../../constants';
+
 import PriceHelper from '../../helpers/price';
 import ColorHelper from '../../helpers/color';
+
 import addMovieAction from '../../store/movies/addMovie';
+
 import { InnerDiv, Div, H1, OuterDiv, Button } from './style';
+
+import Loader from '../../components/MovieDetailLoader';
 
 class MovieDetails extends Component {
   state = {
@@ -117,7 +122,7 @@ class MovieDetails extends Component {
             </Div>
 
           </OuterDiv>
-          : <h4>Loading Data from API</h4>
+          : <Loader />
         }
       </div>
     );
