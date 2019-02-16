@@ -83,7 +83,14 @@ class MovieDetails extends Component {
             <Div>
               <img src={ IMAGE_URL + movieDetails.poster_path } alt=""/>
               <InnerDiv>
-                <iframe width="600" height="300" src={youtubeUrl} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <iframe
+                title="Youtube-Trailer"
+                width="600" height="300"
+                src={youtubeUrl}
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen>
+                </iframe>
                 <h2>Overview</h2>
                 <p>{movieDetails.overview}</p>
                 <div style={{ width: '100px' }}>
