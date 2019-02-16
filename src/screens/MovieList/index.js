@@ -117,9 +117,7 @@ class MovieList extends Component {
             />
           </React.Fragment>
           :
-          <GridContainer>
-            <MoviePlaceHolder />
-          </GridContainer>
+          <MoviePlaceHolder />
         }
       </div>
     );
