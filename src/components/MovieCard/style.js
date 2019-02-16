@@ -19,17 +19,31 @@ padding-bottom: 5%;
     text-decoration: none;
     width: 90%;
     margin: 0 auto;
-    margin-bottom: 20px;
     font-size: 1rem;
-  }
-  h4 {
-    margin: 0;
-    padding: 0;
-    font-size: 0.8rem;
   }
   img {
     width: 100%;
     height: auto;
     border-radius: 5px;
   }
+  h4 {
+    padding: 0;
+    margin: 0;
+  }
+`;
+
+export const Owned = styled.h4`
+color: white;
+background-color: green;
+cursor: pointer;
+font-size: 10px;
+font-weight: 700;
+border-radius: 5px;
+text-align: center;
+margin: 0 auto !important;
+margin-top: 5px !important;
+max-width: 100px;
+text-decoration: none;
+text-transform: uppercase;
+width: 100%;
 `;
