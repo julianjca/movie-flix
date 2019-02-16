@@ -22,7 +22,7 @@ class MovieDetails extends Component {
   }
 
   componentDidMount = async () => {
-    const { match : { params } } = this.props;
+    const { match : { params }, movieData: { ownedMovies } } = this.props;
     const movieID = params.movie.split('-')[0];
     try {
       const { data } = await axios({
@@ -42,7 +42,7 @@ class MovieDetails extends Component {
       this.setState({
         isLoaded: true,
         movieDetails: data,
-        isOwned: this.props.movieData.ownedMovies.includes(movieID),
+        isOwned: ownedMovies.includes(movieID),
         youtubeUrl: YOUTUBE_BASE_URL + youtubeData.data.items[0].id.videoId
       })
     } catch (e) {
@@ -52,7 +52,9 @@ class MovieDetails extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { movieDetails } = this.state;
-    if(nextProps.movieData.ownedMovies !== this.props.movieData.ownedMovies){
+    const { movieData: {ownedMovies}} = this.props;
+
+    if(nextProps.movieData.ownedMovies !== ownedMovies){
       this.setState({
         isOwned: nextProps.movieData.ownedMovies.includes(movieDetails.id.toString())
       })
@@ -61,14 +63,14 @@ class MovieDetails extends Component {
 
   addMovie = () => {
     const { movieDetails } = this.state;
-    if((this.props.movieData.balance - PriceHelper(movieDetails.vote_average)> 0) && !this.props.movieData.ownedMovies.includes(movieDetails.id)) {
-      this.props.addMovie(movieDetails.id.toString(), PriceHelper(movieDetails.vote_average));
+    const { movieData: { balance, ownedMovies }, addMovie } = this.props;
+    if((balance - PriceHelper(movieDetails.vote_average)> 0) && ! ownedMovies.includes(movieDetails.id)) {
+      addMovie(movieDetails.id.toString(), PriceHelper(movieDetails.vote_average));
       toast.success('Success buying movie!');
     }
     else {
       toast.error('Insufficient fund!');
     }
-
   }
 
   render() {
