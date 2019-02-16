@@ -65,7 +65,7 @@ class MovieList extends Component {
                       pathname: "/",
                       search: `?page=${Number(this.state.currentPage) + 1}`,
                     }}
-                    text= "Next Page"
+                    text= "NEXT"
                   />
                 }
               </React.Fragment>
@@ -79,7 +79,7 @@ class MovieList extends Component {
                       pathname: "/",
                       search: `?page=${Number(this.state.currentPage) - 1}`,
                     }}
-                    text= "Previous Page"
+                    text= "PREV"
                   />
                   :
                   <React.Fragment>
@@ -88,14 +88,14 @@ class MovieList extends Component {
                         pathname: "/",
                         search: `?page=${Number(this.state.currentPage) - 1}`,
                       }}
-                      text= "Previous Page"
+                      text= "PREV"
                     />
                     <PaginationButton
                       to={{
                         pathname: "/",
                         search: `?page=${Number(this.state.currentPage) + 1}`,
                       }}
-                      text= "Next Page"
+                      text= "NEXT"
                     />
                   </React.Fragment>
 
