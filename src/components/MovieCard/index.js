@@ -9,6 +9,7 @@ import { Div } from './style';
 
 const MovieCard = (props) => {
   const { movie } = props;
+  console.log(movie)
   const splittedTitle = movie.title.split(' ').join('-')
   return (
     <Link
