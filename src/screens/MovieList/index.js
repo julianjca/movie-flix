@@ -6,8 +6,7 @@ import getMoviesAction from '../../store/movies/getMovies';
 import MovieCard from '../../components/MovieCard/index';
 import MoviePlaceHolder from '../../components/MoviePlaceHolder';
 
-import { GridContainer } from './style';
-
+import { GridContainer, H2 } from './style';
 
 class MovieList extends Component {
   state = {
@@ -38,7 +37,7 @@ class MovieList extends Component {
   render() {
     return (
       <div>
-        <h2>MOVIE LIST</h2>
+        <H2>Movies</H2>
         {
           this.props.movieData.isMovieLoaded
           ?

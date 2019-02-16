@@ -14,3 +14,10 @@ margin: 0 auto;
     text-decoration: none;
   }
 `;
+
+export const H2 = styled.h2`
+text-align: left;
+width: 80%;
+margin: 30px auto;
+font-size: 2rem;
+`
