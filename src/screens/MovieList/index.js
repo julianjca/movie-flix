@@ -5,6 +5,7 @@ import { connect } from 'react-redux';import { Link } from 'react-router-dom'
 import getMoviesAction from '../../store/movies/getMovies';
 import MovieCard from '../../components/MovieCard/index';
 import MoviePlaceHolder from '../../components/MoviePlaceHolder';
+import PaginationButton from '../../components/PaginationButton';
 
 import { GridContainer, H2 } from './style';
 
@@ -59,12 +60,13 @@ class MovieList extends Component {
                   ?
                   <h4>The total page is only 1</h4>
                   :
-                  <Link
+                  <PaginationButton
                     to={{
                       pathname: "/",
                       search: `?page=${Number(this.state.currentPage) + 1}`,
                     }}
-                  >Next Page</Link>
+                    text= "Next Page"
+                  />
                 }
               </React.Fragment>
               :
@@ -72,48 +74,34 @@ class MovieList extends Component {
                 {
                   Number(this.props.movieData.total_pages) === Number(this.state.currentPage)
                   ?
-                  <Link
+                  <PaginationButton
                     to={{
                       pathname: "/",
                       search: `?page=${Number(this.state.currentPage) - 1}`,
                     }}
-                  >Previous Page</Link>
+                    text= "Previous Page"
+                  />
                   :
                   <React.Fragment>
-                    <Link
+                    <PaginationButton
                       to={{
                         pathname: "/",
                         search: `?page=${Number(this.state.currentPage) - 1}`,
                       }}
-                    >Previous Page</Link>
-                    <Link
-                    to={{
-                      pathname: "/",
-                      search: `?page=${Number(this.state.currentPage) + 1}`,
-                    }}
-                    >Next Page</Link>
+                      text= "Previous Page"
+                    />
+                    <PaginationButton
+                      to={{
+                        pathname: "/",
+                        search: `?page=${Number(this.state.currentPage) + 1}`,
+                      }}
+                      text= "Next Page"
+                    />
                   </React.Fragment>
 
                 }
               </React.Fragment>
-
             }
-            <Link
-              to={{
-                pathname: "/",
-                search: `?page=${this.state.currentPage - 1}`,
-                hash: "#the-hash",
-                state: { fromDashboard: true }
-              }}
-            />
-            <Link
-              to={{
-                pathname: "/",
-                search: `?page=${this.state.currentPage + 1}`,
-                hash: "#the-hash",
-                state: { fromDashboard: true }
-              }}
-            />
           </React.Fragment>
           :
           <MoviePlaceHolder />
