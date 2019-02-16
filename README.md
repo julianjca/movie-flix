@@ -30,3 +30,11 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 `docker build -t toko-flix .` <br>
 `docker run -p 3000:3000 toko-flix`
+
+## Screenshots
+
+![Tokoflix](./images/tokoflix1.png)
+![Tokoflix](./images/tokoflix2.png)
+![Tokoflix](./images/tokoflix3.png)
+![Tokoflix](./images/tokoflix4.png)
+![Tokoflix](./images/tokoflix5.png)
