@@ -20,6 +20,13 @@ const MovieCard = (props) => {
       <Div>
         <img src={ SMALL_IMAGE_URL + movie.poster_path } alt=""/>
         <h3><b>{ movie.title }</b></h3>
+        <p>
+          {
+            movie.overview.length > 400
+            ? movie.overview.slice(0, 400) + '...'
+            : movie.overview
+          }
+        </p>
         <StarRatings
           rating={movie.vote_average/2}
           starDimension="12px"

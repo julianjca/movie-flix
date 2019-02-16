@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { Div } from './style';
 
 const Header = (props) => {
-  console.log(props)
   return (
     <Div>
       <Link to="/">
