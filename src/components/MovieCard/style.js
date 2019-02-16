@@ -24,6 +24,7 @@ position: relative;
     width: 90%;
     margin: 0 auto;
     font-size: 1rem;
+    margin-top: 10px;
   }
   img {
     width: 100%;
