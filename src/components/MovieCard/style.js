@@ -10,7 +10,7 @@ align-items: center; */
 flex-direction: column;
 margin: 0 auto;
 /* border: px solid #42B549; */
-background: #161616;
+background: #2A2A2A;
 border-radius: 5px;
 color: #FFF;
 min-height: 500px;

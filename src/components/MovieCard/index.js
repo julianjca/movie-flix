@@ -31,6 +31,7 @@ const MovieCard = (props) => {
           rating={movie.vote_average/2}
           starDimension="12px"
           starSpacing="2px"
+          starRatedColor="#4FA149"
         />
         <h4>IDR { PriceHelper(movie.vote_average) }</h4>
         {
