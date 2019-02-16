@@ -37,10 +37,16 @@ width: 90%;
   }
   h2 {
     text-align: left;
-    width: 70%;
-    margin: 0 auto;
+    width: 80%;
+    margin: 0 0;
     margin-top: 20px;
     font-weight: 700;
+  }
+  h4 {
+    text-align: left;
+    width: 80%;
+    margin: 0 0;
+    font-weight: 300;
   }
 `;
 
@@ -62,4 +68,11 @@ ${props=> props.inactive && css`
 background-color: green;
 color: white;
 `}
-`
+`;
+
+export const TitleGrid = styled.div`
+width: 70%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+`;

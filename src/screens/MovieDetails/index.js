@@ -14,7 +14,7 @@ import ColorHelper from '../../helpers/color';
 
 import addMovieAction from '../../store/movies/addMovie';
 
-import { InnerDiv, Div, H1, OuterDiv, Button } from './style';
+import { InnerDiv, Div, H1, OuterDiv, Button, TitleGrid } from './style';
 
 import Loader from '../../components/MovieDetailLoader';
 
@@ -99,20 +99,27 @@ class MovieDetails extends Component {
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen>
                 </iframe>
-                <h2>Overview</h2>
-                <p>{movieDetails.overview}</p>
-                <div style={{ width: '100px' }}>
+                <TitleGrid>
+                  <div>
+                    <h2>Overview</h2>
+                    <h4>{ movieDetails.runtime } minutes</h4>
+                  </div>
+                  <div
+                  style={{ width: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '3%' }}>
                   <CircularProgressbar
                     percentage={movieDetails.vote_average * 10}
                     text={`${movieDetails.vote_average * 10}%`}
                     styles={{
                       path: { stroke: ColorHelper(movieDetails.vote_average) },
-                      text: { fill: ColorHelper(movieDetails.vote_average), fontSize: '16px' },
+                      text: { fill: ColorHelper(movieDetails.vote_average), fontSize: '20px' },
                     }}
                   />
                 </div>
+                </TitleGrid>
+
+                <p>{movieDetails.overview}</p>
+
                 <h3>Rp { PriceHelper(movieDetails.vote_average) }</h3>
-                <h3>Duration { movieDetails.runtime } minutes</h3>
                 {
                   isOwned ?
                   <Button inactive>BOUGHT</Button>
