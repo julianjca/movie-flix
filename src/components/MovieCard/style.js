@@ -11,7 +11,7 @@ flex-direction: column;
 margin: 0 auto;
 border: 1px solid #FFF;
 background: #FFF;
-border-radius: 10px;
+border-radius: 5px;
 color: #1a1a1a;
 min-height: 500px;
 padding-bottom: 5%;
@@ -30,6 +30,6 @@ padding-bottom: 5%;
   img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 `;
