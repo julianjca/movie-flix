@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import StarRatings from 'react-star-ratings';
 
 
@@ -8,8 +9,7 @@ import PriceHelper from '../../helpers/price';
 import { Div } from './style';
 
 const MovieCard = (props) => {
-  const { movie } = props;
-  console.log(movie)
+  const { movie, movieData } = props;
   const splittedTitle = movie.title.split(' ').join('-')
   return (
     <Link
@@ -26,6 +26,11 @@ const MovieCard = (props) => {
           starDimension="12px"
           starSpacing="2px"
         />
+        {
+          movieData.ownedMovies.includes(movie.id.toString())
+          &&
+          <h4>owned</h4>
+        }
         <h4>Rp { PriceHelper(movie.vote_average) }</h4>
       </Div>
     </Link>
@@ -33,4 +38,10 @@ const MovieCard = (props) => {
   );
 }
 
-export default MovieCard;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    movieData: state
+  }
+}
+
+export default connect(mapStateToProps, null)(MovieCard);
