@@ -56,10 +56,8 @@ class MovieList extends Component {
               ?
               <React.Fragment>
                 {
-                  this.props.movieData.total_pages === 1
-                  ?
-                  <h4>The total page is only 1</h4>
-                  :
+                  this.props.movieData.total_pages > 1
+                  &&
                   <PaginationButton
                     to={{
                       pathname: "/",
