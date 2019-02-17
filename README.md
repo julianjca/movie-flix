@@ -38,3 +38,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 ![Tokoflix](./images/tokoflix3.png)
 ![Tokoflix](./images/tokoflix4.png)
 ![Tokoflix](./images/tokoflix5.png)
+
+## Delployment
+
+US : [https://jolly-beaver-27e5a9.netlify.com/](https://jolly-beaver-27e5a9.netlify.com/) - With Pagination
+ID : [https://hopeful-newton-d5a1ee.netlify.com/](https://hopeful-newton-d5a1ee.netlify.com/) -No Pagination because the total of now playing movies in Indonesia is only 1 page
