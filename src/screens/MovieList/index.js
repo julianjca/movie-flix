@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
-import { connect } from 'react-redux';import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
 
 import getMoviesAction from '../../store/movies/getMovies';
 import MovieCard from '../../components/MovieCard/index';
